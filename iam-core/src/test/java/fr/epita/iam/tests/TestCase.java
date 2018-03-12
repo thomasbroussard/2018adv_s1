@@ -6,6 +6,8 @@ package fr.epita.iam.tests;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.sql.DataSource;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +19,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -51,10 +52,11 @@ public class TestCase {
 
 	private static final Logger LOGGER = LogManager.getLogger(TestCase.class);
 
-	@Autowired
+	@Inject
+	@Named("testIdentity")
 	private Identity id;
 
-	@Autowired
+	@Inject
 	private DataSource ds;
 
 	@BeforeClass
