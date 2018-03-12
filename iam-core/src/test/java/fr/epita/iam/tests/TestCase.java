@@ -68,7 +68,7 @@ public class TestCase {
 	@Test
 	public void test3() {
 		Assert.assertNotNull(id);
-		ds.getConnection();
+		Assert.assertNotNull(ds);
 		LOGGER.info("test3");
 	}
 

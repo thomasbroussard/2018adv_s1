@@ -15,7 +15,7 @@
    
    <bean id="datasource" class="" >
         <property name="driver"></property>
-        <property name="url"></property>
+        <property name="url" value="jdbc:derby:memory:testDS" />
         <property name="password"></property>
         <property name="user"></property>
    
