@@ -3,6 +3,9 @@
  */
 package fr.epita.iam.tests;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.apache.logging.log4j.LogManager;
@@ -59,7 +62,6 @@ public class TestCase {
 		LOGGER.info("globalSetup");
 	}
 
-
 	@Before
 	public void setUp() {
 		LOGGER.info("Before method");
@@ -69,6 +71,23 @@ public class TestCase {
 	public void test3() {
 		Assert.assertNotNull(id);
 		Assert.assertNotNull(ds);
+		Connection connection = null;
+		try {
+			connection = ds.getConnection();
+			final String currentSchema = connection.getSchema();
+			Assert.assertEquals(currentSchema, "ROOT");
+			LOGGER.info(currentSchema);
+		} catch (final Exception e) {
+			LOGGER.error("problem while using the ds connection", e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (final SQLException e) {
+					LOGGER.error("problem while closing the ds connection", e);
+				}
+			}
+		}
 		LOGGER.info("test3");
 	}
 
@@ -86,7 +105,6 @@ public class TestCase {
 	public void tearDown() {
 		LOGGER.debug("After method");
 	}
-
 
 	@AfterClass
 	public static void globalTeardown() {

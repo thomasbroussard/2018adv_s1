@@ -12,14 +12,15 @@
 
 
    <bean id="testIdentity" class="fr.epita.iam.Identity" />
+
    
-   <bean id="datasource" class="" >
-        <property name="driver"></property>
-        <property name="url" value="jdbc:derby:memory:testDS" />
-        <property name="password"></property>
-        <property name="user"></property>
-   
-   
-   </bean>
+   <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="url" value="jdbc:derby:memory:testDS;create=true" />
+        <property name="username" value="root" />
+        <property name="password" value="password" />
+    </bean>
 
 </beans>
