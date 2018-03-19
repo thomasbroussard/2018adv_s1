@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.sql.DataSource;
 
 /**
@@ -20,6 +21,10 @@ public class IdentityJDBCDAO {
 
 	@Inject
 	private DataSource ds;
+
+	@Inject
+	@Named("insertIdentityQuery")
+	private String insertQuery;
 
 	private static final String IDENTITY_UID = "IDENTITY_UID";
 	private static final String QUERY_ALL_IDENTITIES = "select * from IDENTITIES where IDENTITY_DISPLAYNAME = ? and IDENTITY_EMAIL = ?";
@@ -35,7 +40,7 @@ public class IdentityJDBCDAO {
 		try {
 			final Connection connection = ds.getConnection();
 			final PreparedStatement pstmt =
-					connection.prepareStatement("insert into IDENTITIES (IDENTITY_DISPLAYNAME, IDENTITY_EMAIL) values( ?, ?)");
+					connection.prepareStatement(insertQuery);
 
 			pstmt.setString(1, identity.getDisplayName());
 			pstmt.setString(2, identity.getEmail());

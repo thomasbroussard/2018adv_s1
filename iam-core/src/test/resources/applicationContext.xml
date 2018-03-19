@@ -20,7 +20,15 @@
 		<property name="password" value="password" />
 	</bean>
 
-	<bean id="IdentityJDBCDAO" class="fr.epita.iam.IdentityJDBCDAO" />	
+	<bean id="IdentityJDBCDAO" class="fr.epita.iam.IdentityJDBCDAO" />
 
+	<bean id="insertIdentityQuery" class="java.lang.String">
+		<constructor-arg>
+			<value>
+				<![CDATA[insert into IDENTITIES (IDENTITY_DISPLAYNAME, IDENTITY_EMAIL) values( ?, ?)]]>
+			</value>
+		</constructor-arg>
+
+	</bean>
 
 </beans>
