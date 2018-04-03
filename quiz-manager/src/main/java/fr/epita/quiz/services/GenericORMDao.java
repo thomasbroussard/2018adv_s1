@@ -6,6 +6,7 @@
 package fr.epita.quiz.services;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 
@@ -28,7 +29,7 @@ import org.hibernate.query.Query;
  *
  * ${tags}
  */
-public abstract class GenericHibernateDao<T> {
+public abstract class GenericORMDao<T> {
 
 	@Inject
 	SessionFactory sf;
@@ -51,12 +52,20 @@ public abstract class GenericHibernateDao<T> {
 
 	public List<T> search(T entity) {
 		final Session session = sf.openSession();
-		// Improvement?
-		//CriteriaQuery<T> criteria =
-		final Query searchQuery = session.createQuery(getSearchQuery(entity));
+		final WhereClauseBuilder<T> wcb = getWhereClauseBuilder(entity);
+		final Query searchQuery = session.createQuery(wcb.getQueryString());
+		for (final Entry<String, Object> parameterEntry : wcb.getParameters().entrySet()) {
+			searchQuery.setParameter(parameterEntry.getKey(), parameterEntry.getValue());
+		}
+
 		return searchQuery.list();
 	}
 
-	protected abstract String getSearchQuery(T entity);
+	protected abstract WhereClauseBuilder getWhereClauseBuilder(T entity);
+
+	// Old conception
+	// protected abstract String getSearchQuery(T entity);
+	//
+	// protected abstract void completeQuery(T entity, Query toBeCompleted);
 
 }
