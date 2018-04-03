@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Mon Mar 26 19:57:16 CEST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-6375-0502-00000cafb860 
-on database directory memory:C:\Work\Perso\Epita\2018s1_adv\quiz-manager\testDS with class loader sun.misc.Launcher$AppClassLoader@3cd1a2f1 
+Tue Apr 03 20:30:17 CEST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-8cc6-2028-00000cb0d988 
+on database directory memory:C:\Users\tbrou\git\2018advs1\quiz-manager\testDS with class loader sun.misc.Launcher$AppClassLoader@3cd1a2f1 
 Loaded from file:/C:/Users/tbrou/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Work\Perso\Epita\2018s1_adv\quiz-manager
+user.dir=C:\Users\tbrou\git\2018advs1\quiz-manager
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

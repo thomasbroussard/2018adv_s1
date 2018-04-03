@@ -34,6 +34,20 @@ public class QuestionDAO extends GenericORMDao<Question> {
 	@Named("questionQuery")
 	String query;
 
+	@Override
+	protected WhereClauseBuilder<Question> getWhereClauseBuilder(Question entity) {
+		final WhereClauseBuilder<Question> wcb = new WhereClauseBuilder<>();
+		wcb.setQueryString(query);
+
+		// TODO as bonus : let the whereclausebuilder generate this map thanks to introspection
+		final Map<String, Object> parameters = new LinkedHashMap<>();
+		parameters.put("type", entity.getType());
+		parameters.put("question", entity.getQuestion());
+		wcb.setParameters(parameters);
+		return wcb;
+
+	}
+
 	// @Override
 	// protected String getSearchQuery(Question question) {
 	// return query;
@@ -54,18 +68,5 @@ public class QuestionDAO extends GenericORMDao<Question> {
 	 * (non-Javadoc)
 	 * @see fr.epita.quiz.services.GenericHibernateDao#getWhereClauseBuilder(java.lang.Object)
 	 */
-	@Override
-	protected WhereClauseBuilder<Question> getWhereClauseBuilder(Question entity) {
-		final WhereClauseBuilder<Question> wcb = new WhereClauseBuilder<>();
-		wcb.setQueryString(query);
-
-		// TODO as bonus : let the whereclausebuilder generate this map thanks to introspection
-		final Map<String, Object> parameters = new LinkedHashMap<>();
-		parameters.put("type", entity.getType());
-		parameters.put("question", entity.getQuestion());
-		wcb.setParameters(parameters);
-		return wcb;
-
-	}
 
 }
