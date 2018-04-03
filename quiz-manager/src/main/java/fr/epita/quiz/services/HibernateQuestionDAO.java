@@ -5,6 +5,11 @@
  */
 package fr.epita.quiz.services;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.hibernate.query.Query;
+
 import fr.epita.quiz.datamodel.Question;
 
 /**
@@ -24,9 +29,18 @@ import fr.epita.quiz.datamodel.Question;
  */
 public class HibernateQuestionDAO extends GenericHibernateDao<Question> {
 
+	@Inject
+	@Named("questionQuery")
+	String query;
+
 	@Override
-	protected String getSearchQuery() {
-		return "from Question";
+	protected Query getSearchQuery(Question question) {
+		// TODO complete
+
+		final Query searchQuery = sf.openSession().createQuery(query);
+		searchQuery.setParameter("type", question.getType());
+		searchQuery.setParameter("question", question.getQuestion());
+		return searchQuery.toString();
 	}
 
 }

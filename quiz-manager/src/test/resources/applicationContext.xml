@@ -37,7 +37,15 @@
 		</property>
 	</bean>
 
-
+	<bean id="questionQuery" class="java.lang.String">
+		<constructor-arg><value><![CDATA[
+			from Question as question where
+				question.type = :type
+			and
+				question.question = :question
+		]]></value></constructor-arg>
+	
+	</bean>
 
 
 

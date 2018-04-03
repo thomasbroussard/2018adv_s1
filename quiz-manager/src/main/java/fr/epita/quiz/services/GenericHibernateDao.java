@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 /**
  * <h3>Description</h3>
@@ -50,9 +51,12 @@ public abstract class GenericHibernateDao<T> {
 
 	public List<T> search(T entity) {
 		final Session session = sf.openSession();
-		return session.createQuery(getSearchQuery()).list();
+		// Improvement?
+		//CriteriaQuery<T> criteria =
+		final Query searchQuery = session.createQuery(getSearchQuery(entity));
+		return searchQuery.list();
 	}
 
-	protected abstract String getSearchQuery();
+	protected abstract String getSearchQuery(T entity);
 
 }
