@@ -5,13 +5,6 @@
  */
 package fr.epita.quiz.services;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import fr.epita.quiz.datamodel.Question;
 
 /**
@@ -29,30 +22,11 @@ import fr.epita.quiz.datamodel.Question;
  *
  * ${tags}
  */
-public class HibernateQuestionDAO {
+public class HibernateQuestionDAO extends GenericHibernateDao<Question> {
 
-	@Inject
-	SessionFactory sf;
-
-	public void create(Question question) {
-		final Session session = sf.openSession();
-		session.saveOrUpdate(question);
-
-	}
-
-	public void update(Question question) {
-		final Session session = sf.openSession();
-		session.saveOrUpdate(question);
-	}
-
-	public void delete(Question question) {
-		final Session session = sf.openSession();
-		session.delete(question);
-	}
-
-	public List<Question> search(Question question) {
-		final Session session = sf.openSession();
-		return session.createQuery("from Question", Question.class).list();
+	@Override
+	protected String getSearchQuery() {
+		return "from Question";
 	}
 
 }
