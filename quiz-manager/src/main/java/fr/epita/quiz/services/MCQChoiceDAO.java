@@ -43,4 +43,14 @@ public class MCQChoiceDAO extends GenericORMDao<MCQChoice> {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.epita.quiz.services.GenericORMDao#beforeCreate(java.lang.Object)
+	 */
+	@Override
+	public boolean beforeCreate(MCQChoice entity) {
+		return entity.getChoice() != null && entity.getQuestion() != null;
+
+	}
+
 }

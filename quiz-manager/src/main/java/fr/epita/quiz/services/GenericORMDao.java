@@ -34,23 +34,31 @@ public abstract class GenericORMDao<T> {
 	@Inject
 	SessionFactory sf;
 
-	public void create(T entity) {
+	public final void create(T entity) {
+		if (!beforeCreate(entity)) {
+			return;
+		}
+
 		final Session session = sf.openSession();
 		session.saveOrUpdate(entity);
 
 	}
 
-	public void update(T entity) {
+	protected boolean beforeCreate(T entity) {
+		return entity != null;
+	}
+
+	public final void update(T entity) {
 		final Session session = sf.openSession();
 		session.saveOrUpdate(entity);
 	}
 
-	public void delete(T entity) {
+	public final void delete(T entity) {
 		final Session session = sf.openSession();
 		session.delete(entity);
 	}
 
-	public List<T> search(T entity) {
+	public final List<T> search(T entity) {
 		final Session session = sf.openSession();
 		final WhereClauseBuilder<T> wcb = getWhereClauseBuilder(entity);
 		final Query searchQuery = session.createQuery(wcb.getQueryString());

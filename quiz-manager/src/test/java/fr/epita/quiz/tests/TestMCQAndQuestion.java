@@ -65,7 +65,7 @@ public class TestMCQAndQuestion {
 		choice.setChoice("thanks to a LocalSessionFactoryBean instance");
 		choice.setOrder(0);
 		choice.setQuestion(question);
-
+	
 		mcqDAO.create(choice);
 		tx.commit();
 
