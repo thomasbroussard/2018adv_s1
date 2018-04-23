@@ -5,6 +5,8 @@
  */
 package fr.epita.quiz.services;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * <h3>Description</h3>
  * <p>This class allows to ...</p>
@@ -20,6 +22,8 @@ package fr.epita.quiz.services;
  *
  * ${tags}
  */
+
+@Repository
 public class AuthenticationService {
 
 	public boolean authenticate(String login, String password) {
