@@ -1,3 +1,8 @@
+# TODO (2018-05-02)
+* submit the question-editing page values to your new servlet
+* from the parameters then persist the question in the database
+* try to self-check by reloading a new page with an existing (ideally make a search page for your questions).
+
 # TODO (2018-04-09)
 * find a way to make spring and tomcat work together
 
