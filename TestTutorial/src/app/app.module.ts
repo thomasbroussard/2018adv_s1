@@ -1,16 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
-
-import { AppComponent } from './app.component';
-import { QuestionlistComponent } from './components/questionlist/questionlist.component';
-import { QuestionService } from './services/question.service';
+import {AppComponent} from './app.component';
+import {QuestionlistComponent} from './components/questionlist/questionlist.component';
+import {QuestionService} from './services/question.service';
+import {QuestionFormComponent} from './components/question-form/question-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionlistComponent
+    QuestionlistComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule
@@ -20,4 +22,4 @@ import { QuestionService } from './services/question.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
