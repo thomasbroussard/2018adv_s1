@@ -1,6 +1,6 @@
 import {Question} from '../../datamodel/question';
 import {Component, OnInit} from '@angular/core';
-import {Fo
+
 
 @Component({
   selector: 'app-question-form',
@@ -13,6 +13,7 @@ export class QuestionFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.question = new Question(0, 'test', 1, ['']);
   }
 
 }
