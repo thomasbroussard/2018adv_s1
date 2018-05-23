@@ -16,4 +16,7 @@ export class QuestionFormComponent implements OnInit {
     this.question = new Question(0, 'test', 1, ['']);
   }
 
+  validate() {
+    console.log(this.question.title);
+  }
 }
