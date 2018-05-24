@@ -1,5 +1,6 @@
 import {Question} from '../../datamodel/question';
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,13 +11,13 @@ import {Component, OnInit} from '@angular/core';
 export class QuestionFormComponent implements OnInit {
   question: Question;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.question = new Question(0, 'test', 1, ['']);
   }
 
   validate() {
-    console.log(this.question.title);
+    this.router.navigate(['questions']);
   }
 }

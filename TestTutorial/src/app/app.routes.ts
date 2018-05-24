@@ -1,15 +1,15 @@
 import {Routes, RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {LoginComponent} from './components/login/login.component';
-import { McQuestionsComponent } from './components/mc-questions/mc-questions.component';
-import {QuestionsListComponent} from './components/questions-list/questions-list.component';
+import { QuestionFormComponent } from './components/question-form/question-form.component';
+import { QuestionlistComponent } from './components/questionlist/questionlist.component';
+
 import {Question} from './datamodel/question';
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'questions', component: QuestionsListComponent},
-  {path: 'questions/mcq/:id', component: McQuestionsComponent}
+  {path: 'form', component: QuestionFormComponent},
+  {path: '', component: QuestionlistComponent},
+  {path: 'questions', component: QuestionlistComponent}
 
 
 ];
