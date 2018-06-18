@@ -14,7 +14,12 @@
 		<derby.version>10.14.1.0</derby.version>
 		<hibernate.version>5.2.14.Final</hibernate.version>
 		<junit.version>4.12</junit.version>
+		<sonar.host.url>http://sonarqube:9000</sonar.host.url>
+	    <sonar.exclusions>**bootstrap**</sonar.exclusions>
+	    
 	</properties>
+
+
 
 	<dependencies>
 
